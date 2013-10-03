@@ -90,7 +90,8 @@ END:VCARD
       
       attrs = []
       
-      vcards[0].each_field.sort_by(&:name).each do |a|
+      i = 0
+      vcards[0].each_field.sort_by { |vc| i += 1; [vc.name, i] }.each do |a|
         attrs << a
       end
       
@@ -143,27 +144,26 @@ END:VCARD
         a.params.should == {}
       end
       
-      attrs[10].tap do |a|
-        a.group.should == nil
-        a.name.should == "TEL"
-        a.value.should == "3 55"
-        a.params.should == {'type' => %w(CELL VOICE)}
-      end
-      
-      attrs[9].tap do |a|
+      attrs[8].tap do |a|
         a.group.should == "item1"
         a.name.should == "TEL"
         a.value.should == "2 56 38 54"
         a.params.should == {'type' => %w(pref)}
       end
       
-      attrs[8].tap do |a|
+      attrs[9].tap do |a|
         a.group.should == "item2"
         a.name.should == "TEL"
         a.value.should == "5 66"
         a.params.should == {'type' => %w(pref)}
       end
 
+      attrs[10].tap do |a|
+        a.group.should == nil
+        a.name.should == "TEL"
+        a.value.should == "3 55"
+        a.params.should == {'type' => %w(CELL VOICE)}
+      end
 
       attrs[11].tap do |a|
         a.name.should == "UID"
