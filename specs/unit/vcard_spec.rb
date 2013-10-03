@@ -81,7 +81,7 @@ END:VCARD
         attrs << a
       end
       
-      attrs.size.should == 11
+      attrs.size.should == 12
     end
     
     should 'enumerate attributes' do
@@ -126,34 +126,38 @@ END:VCARD
         a.params.should == {}
       end
 
-      
       attrs[5].tap do |a|
+        a.name.should == "PHOTO"
+        a.params.should == {"encoding"=>["b"], "type"=>["JPEG"]}
+      end
+
+      attrs[6].tap do |a|
         a.name.should == "PRODID"
         a.value.should == "-//Apple Inc.//iOS 5.0.1//EN"
         a.params.should == {}
       end
 
-      attrs[6].tap do |a|
+      attrs[7].tap do |a|
         a.name.should == "REV"
         a.value.should == Time.parse("2012-10-31T16:08:22Z")
         a.params.should == {}
       end
       
-      attrs[7].tap do |a|
+      attrs[10].tap do |a|
         a.group.should == nil
         a.name.should == "TEL"
         a.value.should == "3 55"
         a.params.should == {'type' => %w(CELL VOICE)}
       end
       
-      attrs[8].tap do |a|
+      attrs[9].tap do |a|
         a.group.should == "item1"
         a.name.should == "TEL"
         a.value.should == "2 56 38 54"
         a.params.should == {'type' => %w(pref)}
       end
       
-      attrs[9].tap do |a|
+      attrs[8].tap do |a|
         a.group.should == "item2"
         a.name.should == "TEL"
         a.value.should == "5 66"
@@ -161,7 +165,7 @@ END:VCARD
       end
 
 
-      attrs[10].tap do |a|
+      attrs[11].tap do |a|
         a.name.should == "UID"
         a.value.should == "11"
         a.params.should == {}
