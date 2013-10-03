@@ -81,7 +81,7 @@ END:VCARD
         attrs << a
       end
       
-      attrs.size.should == 12
+      attrs.size.should == 13
     end
     
     should 'enumerate attributes' do
@@ -170,7 +170,13 @@ END:VCARD
         a.value.should == "11"
         a.params.should == {}
       end
-      
+
+      attrs[12].tap do |a|
+        a.name.should == 'X-SOCIALPROFILE'
+        a.group.should == nil
+        a.value.should == 'http://twitter.com/jbgo'
+        a.params.should == {'type' => %w(twitter), 'x-user' => %w(jbgo), 'x-userid' => %w(42)}
+      end
     end
     
     should "raise an error if version is not supported" do

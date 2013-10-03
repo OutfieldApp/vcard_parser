@@ -9,6 +9,7 @@ item2.TEL;type=pref:5 66
 TEL;type=CELL;type=VOICE:3 55
 item2.ADR;type=HOME;type=pref:;;3 rue du chat;Dris;;90880;FRANCE
 BDAY;value=date:1900-01-01
+X-SOCIALPROFILE;type=twitter;x-user=jbgo;x-userid=42:http://twitter.com/jbgo
 REV:2012-10-31T16:08:22Z
 UID:11
 PHOTO;encoding=b;type=JPEG:/9j/4AAQSkZJRgABAQEAkACQAAD/4gxYSUNDX1BST0ZJTEUA
